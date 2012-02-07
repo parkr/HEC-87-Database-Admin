@@ -63,3 +63,5 @@ Cache::config('default', array('engine' => 'File'));
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+ 
+date_default_timezone_set('America/New_York');
