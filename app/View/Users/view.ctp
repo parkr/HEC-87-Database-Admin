@@ -61,9 +61,9 @@
 			<?php echo h($user['User']['bio']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Picture'); ?></dt>
+		<dt><?php echo __('Photo'); ?></dt>
 		<dd>
-			<?php echo h($user['User']['picture']); ?>
+			<?php echo h($user['User']['photo']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Last Login'); ?></dt>

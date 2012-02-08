@@ -25,12 +25,32 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+	Router::connect('/', array('controller' => 'pages', 'action' => 'display'));
+	
 /**
- * ...and connect the rest of 'Pages' controller's urls.
+ * Single Pages
  */
-	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+	Router::connect('/updates', array('controller' => 'pages', 'action' => 'updates'));
+	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
+	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
+	Router::connect('/register', array('controller' => 'users', 'action' => 'register'));
+	Router::connect('/reset/*', array('controller' => 'users', 'action' => 'reset'));
 
+/**
+ * Route new names / aliases to controllers.
+ */
+ 	Router::connect('/profiles', array('controller' => 'users'));
+	Router::connect('/profiles/:action', array('controller' => 'users'));
+	Router::connect('/profiles/:action/*', array('controller' => 'users'));
+	Router::connect('/f-b', array('controller' => 'menus'));
+	Router::connect('/f-b/:action/*', array('controller' => 'menus'));
+	Router::connect('/program', array('controller' => 'events'));
+	Router::connect('/program/:action', array('controller' => 'events'));
+	Router::connect('/program/:action/*', array('controller' => 'events'));
+	Router::connect('/feedback', array('controller' => 'thoughts'));
+	Router::connect('/feedback/:action', array('controller' => 'thoughts'));
+	Router::connect('/feedback/:action/*', array('controller' => 'thoughts'));
+	
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
  * how to customize the loading of plugin routes.

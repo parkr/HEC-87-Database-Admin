@@ -14,7 +14,7 @@
 			<th><?php echo $this->Paginator->sort('company');?></th>
 			<th><?php echo $this->Paginator->sort('position');?></th>
 			<th><?php echo $this->Paginator->sort('bio');?></th>
-			<th><?php echo $this->Paginator->sort('picture');?></th>
+			<th><?php echo $this->Paginator->sort('photo');?></th>
 			<th><?php echo $this->Paginator->sort('last_login');?></th>
 			<th><?php echo $this->Paginator->sort('date_created');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
@@ -34,7 +34,7 @@
 		<td><?php echo h($user['User']['company']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['position']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['bio']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['picture']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['photo']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['last_login']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['date_created']); ?>&nbsp;</td>
 		<td class="actions">

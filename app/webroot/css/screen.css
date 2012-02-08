@@ -1,0 +1,16 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+#section_listing {
+  margin: 0 auto;
+  width: 80%; }
+  #section_listing h1 {
+    font-size: 200%; }
+  #section_listing ul li a {
+    font-size: 150%; }
+
+#footer {
+  color: #fff; }
+  #footer * {
+    color: #fff; }

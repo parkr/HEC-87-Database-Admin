@@ -15,7 +15,7 @@
 		echo $this->Form->input('company');
 		echo $this->Form->input('position');
 		echo $this->Form->input('bio');
-		echo $this->Form->input('picture');
+		echo $this->Form->input('photo');
 		echo $this->Form->input('last_login');
 		echo $this->Form->input('date_created');
 	?>
