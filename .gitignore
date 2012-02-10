@@ -44,3 +44,6 @@ tmtags
 
 # Sass
 */.sass-cache/*
+
+# Project-Specific
+app/remote_pull.sh
