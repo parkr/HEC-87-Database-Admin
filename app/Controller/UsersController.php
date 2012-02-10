@@ -71,10 +71,11 @@ class UsersController extends AppController {
 		$this->set('title_for_layout', 'Login');
 		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		if ($this->request->is('post')) {
-			if ($this->Auth->login()) {
+			$user = $this->User->findByEmail($this->request->data['User']['email']);
+			if ($user['User']['role'] == 'admin' && $this->Auth->login()) {
 				return $this->redirect($this->Auth->redirect());
 			} else {
-				$this->Session->setFlash(__('Username or password is incorrect or you are not a registered user.'), 'default', array(), 'auth');
+				$this->Session->setFlash(__('Username or password is incorrect, you are not a registered user, or you do not have an admin account.'), 'default', array(), 'auth');
 			}
 		}
 	}
