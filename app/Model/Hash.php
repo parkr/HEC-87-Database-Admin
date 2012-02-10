@@ -1,11 +1,28 @@
 <?php
 App::uses('AppModel', 'Model');
+App::import('Helper', 'Html');
 /**
  * Hash Model
  *
  * @property User $User
  */
 class Hash extends AppModel {
+	
+	public function getLink($hash, $email){
+		return FULL_BASE_URL. HtmlHelper::url("/reset/".$email."/".$hash['Hash']['hash']);
+	}
+	
+	public function generateNew($email){
+		// Generate hash based on email address
+		return AuthComponent::password($email);
+	}
+	
+	public function hasExpired($hash){
+		$expires = strtotime($hash['Hash']['expires']);
+		$now = time();
+		return ($now > $expires);
+	}
+	
 /**
  * Validation rules
  *

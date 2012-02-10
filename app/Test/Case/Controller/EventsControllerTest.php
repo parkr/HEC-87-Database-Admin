@@ -1,5 +1,5 @@
 <?php
-/* Events Test cases generated on: 2012-02-07 03:05:49 : 1328601949*/
+/* Events Test cases generated on: 2012-02-10 16:13:04 : 1328908384*/
 App::uses('EventsController', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class EventsControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.event', 'app.menu', 'app.food_item');
+	public $fixtures = array('app.event', 'app.menu', 'app.food_item', 'app.speaker', 'app.user', 'app.hash', 'app.events_user');
 
 /**
  * setUp method

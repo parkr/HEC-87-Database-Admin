@@ -6,7 +6,6 @@ App::uses('AppController', 'Controller');
  * @property User $User
  */
 class UsersController extends AppController {
-
 	public $account_types = array('student', 'attendee');
 	public $account_types_plural = array('students', 'attendees');
 	public $invite_codes = array('hecstudent', 'hecattendee', 'bod');
@@ -63,10 +62,7 @@ class UsersController extends AppController {
 		}
 		return "";
 	}
-
-	/** 
-	 * Auth Methods
-	 */
+	
 	public function login() {
 		$this->set('title_for_layout', 'Login');
 		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
@@ -79,50 +75,6 @@ class UsersController extends AppController {
 			}
 		}
 	}
-	public function forgot() {
-		$this->set('title_for_layout', 'Forgot Password?');
-		$this->set('prevpage_for_layout', array('title' => "Login", 'routing' => array('action' => 'login')));
-		if($this->request->is('post')){
-			// Store hash
-			$this->User->Hash->create();
-			$user = $this->User->findByEmail($this->request->data['User']['email']);
-			$hash = array(
-				'Hash' => array(
-					'user_id' => $user['User']['id'],
-					'hash' => $this->User->Hash->generateNew($user['User']['email']),
-					'expires' => date('Y-m-d H:i:s', mktime(date("H"), date("i"), date("s"), date("n"), (date("j")+14), date("Y")))." EST" // 14 days to use.
-				)
-			);
-			if($this->User->Hash->save($hash)){
-				// Send email
-				$email = new CakeEmail();
-				$email->from(array('noreply@hotelezracornell.com' => 'Hotel Ezra Cornell IT'));
-				$email->to($user['User']['email']);
-				$email->subject('Reset your password');
-				$email->send("Hello,\n\nYou just requested to reset your password. You may do so here: ".$this->User->Hash->getLink($hash, $user['User']['email'])."\n\nSincerely,\nIT Manager\nHotel Ezra Cornell");
-				$this->Session->setFlash('Your request has been processed. Please check your email.');
-				$this->redirect(array('action' => 'forgot'));
-			}else{
-				$this->Session->setFlash('Something went wrong with your request. Please try again.');
-			}
-		}
-	}
-	public function reset($email, $hash_code) {
-		$user = $this->User->findByEmail($email);
-		$hash = $this->User->Hash->findByHash($hash_code);
-		//if($user['User']['id'] == $hash['Hash']['user_id'] && !$this->User->Hash->hasExpired($hash)){
-			//
-			//}
-		// TODO: Check hash
-		$this->set('title_for_layout', 'Forgot Password?');
-		$this->set('prevpage_for_layout', array('title' => "Login", 'routing' => array('action' => 'login')));
-		if($this->request->is('post')){
-			// Hash password
-			// Set new password
-			// Login
-		}
-		
-	}
 	public function logout() {
 		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		$redirect_to = $this->Auth->logout();
@@ -134,59 +86,7 @@ class UsersController extends AppController {
 			$this->redirect($redirect_to);
 		}
 	}
-	public function register() {
-		$this->set('title_for_layout', 'Register');
-		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
-		
-		// Check for invalidity.
-		if($this->Auth->loggedIn()){
-			$this->Session->setFlash('You are already logged in.');
-			$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
-		}
-		if(isset($this->params->query) && isset($this->params->query['invite']) && in_array($this->params->query['invite'], $this->invite_codes)){
-			$this->set('type', (isset($this->params->query['type']) && $this->params->query['type'] != "" && in_array($this->params->query['type'], $this->account_types)) ? $this->params->query['type'] : "student");
-			if ($this->request->is('post')) {
-				$this->User->create();
-				if($this->request->data['User']['password'] != $this->request->data['User']['confirm_password']){
-					$this->Session->setFlash(__('Your passwords do not match.'));
-				} else {
-					if($this->User->emailExists($this->request->data['User']['email'])){
-						$this->Session->setFlash(__('The email you entered is already associated with another user.'));
-					}else{
-						$this->request->data['User']['role'] = "user";
-						$this->request->data['User']['date_created'] = date("Y-m-d H:i:s");
-						if($this->request->data['User']['type'] == 'student'){
-							$this->request->data['User']['company'] = "Hotel Ezra Cornell ".$this->_currentHECYear();
-						}
-						$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
-						if ($this->User->save($this->request->data)) {
-							$id = $this->User->id;
-							$this->request->data['User'] = array_merge($this->request->data["User"], array('id' => $id));
-							$this->Auth->login($this->request->data['User']);
-							$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
-						} else {
-							$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-						}
-					}
-				}
-			}
-		}else{
-			$this->Session->setFlash('You must have a valid invite code to be qualified to register.');
-			$this->redirect(array('controller' => 'pages', 'action' => 'home'));
-		}
-	}
-	
-	private function _currentHECYear(){
-		$base_year = 2012;
-		$base_hec_year = 87;
-		if( ((int) date("m")) >= 6 ){
-			// It's June. We're thinking about next year.
-			return $base_year - 1924;
-		}else{
-			return $base_year - 1925;
-		}
-	}
-	
+
 
 /**
  * index method
@@ -227,6 +127,8 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		}
+		$events = $this->User->Event->find('list');
+		$this->set(compact('events'));
 	}
 
 /**
@@ -250,6 +152,8 @@ class UsersController extends AppController {
 		} else {
 			$this->request->data = $this->User->read(null, $id);
 		}
+		$events = $this->User->Event->find('list');
+		$this->set(compact('events'));
 	}
 
 /**

@@ -12,12 +12,13 @@
 		echo $this->Form->input('email');
 		echo $this->Form->input('phone_number');
 		echo $this->Form->input('graduation_year');
-		echo $this->Form->input('company');
 		echo $this->Form->input('position');
+		echo $this->Form->input('company');
 		echo $this->Form->input('bio');
 		echo $this->Form->input('photo');
 		echo $this->Form->input('last_login');
 		echo $this->Form->input('date_created');
+		echo $this->Form->input('Event');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
@@ -28,5 +29,9 @@
 
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('User.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('User.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index'));?></li>
+		<li><?php echo $this->Html->link(__('List Hashes'), array('controller' => 'hashes', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Hash'), array('controller' => 'hashes', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Event'), array('controller' => 'events', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

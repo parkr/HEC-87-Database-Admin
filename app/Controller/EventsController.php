@@ -47,6 +47,8 @@ class EventsController extends AppController {
 				$this->Session->setFlash(__('The event could not be saved. Please, try again.'));
 			}
 		}
+		$users = $this->Event->User->find('list');
+		$this->set(compact('users'));
 	}
 
 /**
@@ -70,6 +72,8 @@ class EventsController extends AppController {
 		} else {
 			$this->request->data = $this->Event->read(null, $id);
 		}
+		$users = $this->Event->User->find('list');
+		$this->set(compact('users'));
 	}
 
 /**

@@ -11,8 +11,8 @@
 			<th><?php echo $this->Paginator->sort('email');?></th>
 			<th><?php echo $this->Paginator->sort('phone_number');?></th>
 			<th><?php echo $this->Paginator->sort('graduation_year');?></th>
-			<th><?php echo $this->Paginator->sort('company');?></th>
 			<th><?php echo $this->Paginator->sort('position');?></th>
+			<th><?php echo $this->Paginator->sort('company');?></th>
 			<th><?php echo $this->Paginator->sort('bio');?></th>
 			<th><?php echo $this->Paginator->sort('photo');?></th>
 			<th><?php echo $this->Paginator->sort('last_login');?></th>
@@ -31,8 +31,8 @@
 		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['phone_number']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['graduation_year']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['company']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['position']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['company']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['bio']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['photo']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['last_login']); ?>&nbsp;</td>
@@ -64,5 +64,9 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Hashes'), array('controller' => 'hashes', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Hash'), array('controller' => 'hashes', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Event'), array('controller' => 'events', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
