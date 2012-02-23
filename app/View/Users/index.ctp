@@ -22,13 +22,18 @@
 		<td><?php echo h($user['User']['role']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['type']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['show_contact_info']); ?>&nbsp;</td>
+		<td><?php echo $this->Html->image( 
+							($user['User']['show_contact_info'] == "1") ? 
+							"github-public.png" : "github-private.png"
+						); 
+			 ?>&nbsp;
+		</td>
 		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['phone_number']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['graduation_year']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['position']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['company']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['bio']); ?>&nbsp;</td>
+		<td><?php echo truncate(h($user['User']['bio']), 20); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['photo']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['date_created']); ?>&nbsp;</td>
 		<td class="actions">
