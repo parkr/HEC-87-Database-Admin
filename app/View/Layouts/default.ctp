@@ -31,7 +31,8 @@ $cakeDescription = __d('cake_dev', 'Hotel Ezra Cornell Database Admin');
 
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('screen');
-
+		
+		echo $this->Html->script('application');
 		echo $scripts_for_layout;
 	?>
 </head>

@@ -3,21 +3,35 @@
 	<fieldset>
 		<legend><?php echo __('Add User'); ?></legend>
 	<?php
-		echo $this->Form->input('role');
-		echo $this->Form->input('type');
+		echo $this->Form->input('role', array(
+			'type' => 'select',
+			'selected' => 'user',
+			'options' => array(
+				'user' => 'user', 
+				'admin' => 'admin'
+			)
+		));
+		echo $this->Form->input('type', array(
+			'type' => 'select',
+			'selected' => 'attendee',
+			'options' => array(
+				'attendee' => 'attendee', 
+				'student' => 'student'
+			)
+		));
 		echo $this->Form->input('name');
 		echo $this->Form->input('password');
-		echo $this->Form->input('show_contact_info');
 		echo $this->Form->input('email');
 		echo $this->Form->input('phone_number');
+		echo $this->Form->input('show_contact_info');
 		echo $this->Form->input('graduation_year');
 		echo $this->Form->input('position');
 		echo $this->Form->input('company');
 		echo $this->Form->input('bio');
-		echo $this->Form->input('photo');
-		echo $this->Form->input('last_login');
-		echo $this->Form->input('date_created');
-		echo $this->Form->input('Event');
+		echo $this->Form->input('picture', array('type' => 'file'));
+		echo $this->Form->input('Event', array(
+			'disabled' => 'disabled'
+		));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
