@@ -13,7 +13,7 @@ function hecYear(){
 
 document.onreadystatechange = function(){
 	if(this.readyState ==  "complete"){
-		if(document.location.pathname.search("profiles/add")){
+		if(document.location.pathname.search("profiles/add") >= 0){
 			var userType = document.getElementById("UserType");
 			userType.onchange = function(){
 				var eventSelect = document.getElementById("EventEvent");
