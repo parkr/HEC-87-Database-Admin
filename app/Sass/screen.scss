@@ -22,3 +22,10 @@
 		color: #fff;
 	}
 }
+
+.note {
+	color: lighten(#444, 30%);
+	form & {
+		margin-top: -1.5em;
+	}
+}

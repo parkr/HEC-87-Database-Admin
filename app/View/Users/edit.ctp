@@ -7,7 +7,9 @@
 		echo $this->Form->input('role');
 		echo $this->Form->input('type');
 		echo $this->Form->input('name');
-		echo $this->Form->input('password');
+		echo $this->Form->input('password', array('value' => ''));
+		echo $this->Form->input('confirm_password', array('type' => 'password', 'required' => true));
+		echo $this->Html->tag('div', 'If you wish to change the password, enter something. Otherwise, leave it blank.', array('class' => 'note'));
 		echo $this->Form->input('show_contact_info');
 		echo $this->Form->input('email');
 		echo $this->Form->input('phone_number');

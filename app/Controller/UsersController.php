@@ -153,11 +153,20 @@ class UsersController extends AppController {
 			$fieldList = array('name', 'show_contact_info', 'email', 'phone_number', 'graduation_year', 'company', 'position', 'bio', 'photo');
 			$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
 			
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			if($this->request->data['User']['password'] != ""){
+				// nothing entered. forget the password (do not save)
+				$fieldList[] = 'password';
+			}
+			
+			if($this->request->data['User']['password'] == $this->request->data['User']['confirm_password']){
+				if ($this->User->save($this->request->data, true, $fieldList)) {
+					$this->Session->setFlash(__('The user has been saved'));
+					$this->redirect(array('action' => 'index'));
+				} else {
+					$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				}
+			}else{
+				$this->Session->setFlash(__('The passwords do not match.'));
 			}
 		} else {
 			$this->request->data = $this->User->read(null, $id);
