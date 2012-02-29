@@ -1,5 +1,5 @@
 <?php
-/* FoodItems Test cases generated on: 2012-02-07 03:06:19 : 1328601979*/
+/* FoodItems Test cases generated on: 2012-02-29 00:33:38 : 1330493618*/
 App::uses('FoodItemsController', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class FoodItemsControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.food_item', 'app.menu', 'app.event');
+	public $fixtures = array('app.food_item', 'app.menu', 'app.event', 'app.speaker', 'app.user', 'app.hash', 'app.events_user');
 
 /**
  * setUp method

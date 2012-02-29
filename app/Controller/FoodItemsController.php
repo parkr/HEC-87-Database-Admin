@@ -47,8 +47,8 @@ class FoodItemsController extends AppController {
 				$this->Session->setFlash(__('The food item could not be saved. Please, try again.'));
 			}
 		}
-		$menuses = $this->FoodItem->Menu->find('list');
-		$this->set(compact('menuses'));
+		$menus = $this->FoodItem->Menu->find('list');
+		$this->set(compact('menus'));
 	}
 
 /**
@@ -72,8 +72,8 @@ class FoodItemsController extends AppController {
 		} else {
 			$this->request->data = $this->FoodItem->read(null, $id);
 		}
-		$menuses = $this->FoodItem->Menu->find('list');
-		$this->set(compact('menuses'));
+		$menus = $this->FoodItem->Menu->find('list');
+		$this->set(compact('menus'));
 	}
 
 /**

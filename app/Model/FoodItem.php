@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * FoodItem Model
  *
- * @property Menus $Menus
+ * @property Menu $Menu
  */
 class FoodItem extends AppModel {
 /**
@@ -18,7 +18,7 @@ class FoodItem extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'menus_id' => array(
+		'menu_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -27,26 +27,8 @@ class FoodItem extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'inlist' => array(
-				'rule' => array('inlist'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
 		),
 		'name' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'description' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -66,7 +48,7 @@ class FoodItem extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Menus' => array(
+		'Menu' => array(
 			'className' => 'Menu',
 			'foreignKey' => 'menu_id',
 			'conditions' => '',

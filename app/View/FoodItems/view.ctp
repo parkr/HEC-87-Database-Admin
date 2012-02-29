@@ -6,9 +6,9 @@
 			<?php echo h($foodItem['FoodItem']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Menus'); ?></dt>
+		<dt><?php echo __('Menu'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($foodItem['Menus']['name'], array('controller' => 'menus', 'action' => 'view', $foodItem['Menus']['id'])); ?>
+			<?php echo $this->Html->link($foodItem['Menu']['name'], array('controller' => 'menus', 'action' => 'view', $foodItem['Menu']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Name'); ?></dt>
@@ -31,6 +31,6 @@
 		<li><?php echo $this->Html->link(__('List Food Items'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Food Item'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Menus'), array('controller' => 'menus', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Menus'), array('controller' => 'menus', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Menu'), array('controller' => 'menus', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -18,6 +18,6 @@
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('FoodItem.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('FoodItem.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Food Items'), array('action' => 'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Menus'), array('controller' => 'menus', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Menus'), array('controller' => 'menus', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Menu'), array('controller' => 'menus', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
