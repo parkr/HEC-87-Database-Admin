@@ -8,6 +8,7 @@
 			<th><?php echo $this->Paginator->sort('boh_fm');?></th>
 			<th><?php echo $this->Paginator->sort('location');?></th>
 			<th><?php echo $this->Paginator->sort('date');?></th>
+			<th><?php echo $this->Paginator->sort('photo');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -15,12 +16,13 @@
 	<tr>
 		<td><?php echo h($menu['Menu']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($menu['Events']['name'], array('controller' => 'events', 'action' => 'view', $menu['Events']['id'])); ?>
+			<?php echo $this->Html->link($menu['Event']['name'], array('controller' => 'events', 'action' => 'view', $menu['Event']['id'])); ?>
 		</td>
 		<td><?php echo h($menu['Menu']['name']); ?>&nbsp;</td>
 		<td><?php echo h($menu['Menu']['boh_fm']); ?>&nbsp;</td>
 		<td><?php echo h($menu['Menu']['location']); ?>&nbsp;</td>
 		<td><?php echo h($menu['Menu']['date']); ?>&nbsp;</td>
+		<td><?php echo h($menu['Menu']['photo']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $menu['Menu']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $menu['Menu']['id'])); ?>
@@ -49,7 +51,7 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('New Menu'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Events'), array('controller' => 'events', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Event'), array('controller' => 'events', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Food Items'), array('controller' => 'food_items', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Food Item'), array('controller' => 'food_items', 'action' => 'add')); ?> </li>
 	</ul>

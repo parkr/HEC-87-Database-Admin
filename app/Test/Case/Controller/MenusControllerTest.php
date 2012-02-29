@@ -1,5 +1,5 @@
 <?php
-/* Menus Test cases generated on: 2012-02-07 03:06:48 : 1328602008*/
+/* Menus Test cases generated on: 2012-02-29 00:27:50 : 1330493270*/
 App::uses('MenusController', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class MenusControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.menu', 'app.event', 'app.food_item');
+	public $fixtures = array('app.menu', 'app.event', 'app.speaker', 'app.user', 'app.hash', 'app.events_user', 'app.food_item');
 
 /**
  * setUp method

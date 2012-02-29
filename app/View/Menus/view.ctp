@@ -6,9 +6,9 @@
 			<?php echo h($menu['Menu']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Events'); ?></dt>
+		<dt><?php echo __('Event'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($menu['Events']['name'], array('controller' => 'events', 'action' => 'view', $menu['Events']['id'])); ?>
+			<?php echo $this->Html->link($menu['Event']['name'], array('controller' => 'events', 'action' => 'view', $menu['Event']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Name'); ?></dt>
@@ -31,6 +31,11 @@
 			<?php echo h($menu['Menu']['date']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Photo'); ?></dt>
+		<dd>
+			<?php echo h($menu['Menu']['photo']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
@@ -41,7 +46,7 @@
 		<li><?php echo $this->Html->link(__('List Menus'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Menu'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Events'), array('controller' => 'events', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Event'), array('controller' => 'events', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Food Items'), array('controller' => 'food_items', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Food Item'), array('controller' => 'food_items', 'action' => 'add')); ?> </li>
 	</ul>
