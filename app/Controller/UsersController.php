@@ -122,15 +122,27 @@ class UsersController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
-			
-			$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
-			$this->request->data['User']['date_created'] = date("Y-m-d H:i:s");
-			
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
-				$this->redirect(array('action' => 'index'));
+			if($this->request->data['User']['password'] != $this->request->data['User']['confirm_password']){
+				$this->Session->setFlash(__('The passwords do not match.'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				if($this->User->emailExists($this->request->data['User']['email'])){
+					$this->Session->setFlash(__('The email you entered is already associated with another user.'));
+				}else{
+					$this->request->data['User']['role'] = "user";
+					$this->request->data['User']['date_created'] = date("Y-m-d H:i:s");
+					if($this->request->data['User']['type'] == 'student'){
+						$this->request->data['User']['company'] = "Hotel Ezra Cornell ".$this->_currentHECYear();
+					}
+					$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
+					if ($this->User->save($this->request->data)) {
+						$id = $this->User->id;
+						$this->request->data['User'] = array_merge($this->request->data["User"], array('id' => $id));
+						$this->Auth->login($this->request->data['User']);
+						$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
+					} else {
+						$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+					}
+				}
 			}
 		}
 		$events = $this->User->Event->find('list');
