@@ -21,6 +21,7 @@
 		));
 		echo $this->Form->input('name');
 		echo $this->Form->input('password');
+		echo $this->Form->input('confirm_password', array('type' => 'password'));
 		echo $this->Form->input('email');
 		echo $this->Form->input('phone_number');
 		echo $this->Form->input('show_contact_info');
