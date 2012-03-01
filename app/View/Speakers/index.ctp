@@ -19,7 +19,7 @@
 		<td><?php echo h($speaker['Speaker']['last_name']); ?>&nbsp;</td>
 		<td><?php echo h($speaker['Speaker']['position']); ?>&nbsp;</td>
 		<td><?php echo h($speaker['Speaker']['company']); ?>&nbsp;</td>
-		<td><?php echo h($speaker['Speaker']['bio']); ?>&nbsp;</td>
+		<td><?php echo truncate($speaker['Speaker']['bio'], 15); ?>&nbsp;</td>
 		<td><?php echo h($speaker['Speaker']['photo']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $speaker['Speaker']['id'])); ?>
