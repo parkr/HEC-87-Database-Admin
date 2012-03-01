@@ -21,6 +21,16 @@
 			<?php echo h($user['User']['name']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('First Name'); ?></dt>
+		<dd>
+			<?php echo h($user['User']['first_name']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Last Name'); ?></dt>
+		<dd>
+			<?php echo h($user['User']['last_name']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Password'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['password']); ?>

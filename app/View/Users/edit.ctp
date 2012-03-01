@@ -7,9 +7,9 @@
 		echo $this->Form->input('role');
 		echo $this->Form->input('type');
 		echo $this->Form->input('name');
-		echo $this->Form->input('password', array('value' => ''));
-		echo $this->Form->input('confirm_password', array('type' => 'password', 'required' => true));
-		echo $this->Html->tag('div', 'If you wish to change the password, enter something. Otherwise, leave it blank.', array('class' => 'note'));
+		echo $this->Form->input('first_name');
+		echo $this->Form->input('last_name');
+		echo $this->Form->input('password');
 		echo $this->Form->input('show_contact_info');
 		echo $this->Form->input('email');
 		echo $this->Form->input('phone_number');
@@ -17,17 +17,7 @@
 		echo $this->Form->input('position');
 		echo $this->Form->input('company');
 		echo $this->Form->input('bio');
-		
-		echo '<div class="form_photo">';
-		if($this->Form->data['User']['photo'] != ""){
-			echo $this->Html->image($this->Form->data['User']['photo'], array('alt' => $this->Form->data['User']['name'], 'class' => 'photo'));
-		}else{
-			$this->Html->tag('div', 'No photo chosen.', array('class' => 'details'));
-		}
-		echo $this->Form->input('photo', array('type' => 'hidden'));
-		echo $this->Form->input('picture', array('type' => 'file'));
-		echo '</div>';
-		
+		echo $this->Form->input('photo');
 		echo $this->Form->input('last_login');
 		echo $this->Form->input('date_created');
 		echo $this->Form->input('Event');
