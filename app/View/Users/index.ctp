@@ -27,7 +27,7 @@
 		<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['first_name']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['last_name']); ?>&nbsp;</td>
-		<td><?php echo (($user['User']['show_contact_info']) ? $this->Html->link("github-public.png") : $this->Html->link("github-private.png")); ?>&nbsp;</td>
+		<td><?php echo (($user['User']['show_contact_info']) ? $this->Html->image("github-public.png") : $this->Html->image("github-private.png")); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['phone_number']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['graduation_year']); ?>&nbsp;</td>
