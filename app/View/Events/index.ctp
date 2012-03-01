@@ -2,7 +2,6 @@
 	<h2><?php echo __('Events');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('description');?></th>
 			<th><?php echo $this->Paginator->sort('start_time');?></th>
@@ -14,9 +13,8 @@
 	<?php
 	foreach ($events as $event): ?>
 	<tr>
-		<td><?php echo h($event['Event']['id']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['name']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['description']); ?>&nbsp;</td>
+		<td><?php echo truncate($event['Event']['description'], 20); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['start_time']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['end_time']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['location']); ?>&nbsp;</td>
