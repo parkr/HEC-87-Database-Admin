@@ -182,6 +182,7 @@ class UsersController extends AppController {
 			}
 		} else {
 			$this->request->data = $this->User->read(null, $id);
+			$this->request->data['User']['password'] = "";
 		}
 		$events = $this->User->Event->find('list');
 		$this->set(compact('events'));
