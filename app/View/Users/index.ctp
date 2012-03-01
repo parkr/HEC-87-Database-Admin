@@ -4,7 +4,6 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('role');?></th>
 			<th><?php echo $this->Paginator->sort('type');?></th>
-			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('first_name');?></th>
 			<th><?php echo $this->Paginator->sort('last_name');?></th>
 			<th><?php echo $this->Paginator->sort('show_contact_info');?></th>
@@ -24,7 +23,6 @@
 	<tr>
 		<td><?php echo h($user['User']['role']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['type']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['first_name']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['last_name']); ?>&nbsp;</td>
 		<td><?php echo (($user['User']['show_contact_info']) ? $this->Html->image("github-public.png") : $this->Html->image("github-private.png")); ?>&nbsp;</td>
