@@ -35,7 +35,7 @@
 		<td><?php echo h($user['User']['graduation_year']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['position']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['company']); ?>&nbsp;</td>
-		<td><?php echo truncate($user['User']['bio'], 20); ?>&nbsp;</td>
+		<td><?php echo truncate($user['User']['bio'], 12); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['photo']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['last_login']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['date_created']); ?>&nbsp;</td>
