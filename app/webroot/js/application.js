@@ -26,10 +26,11 @@ document.onreadystatechange = function(){
 				}else{
 					//enable
 					eventSelect.disabled = "";
-					companyInput.value = "Hotel Ezra Cornell "+hecYear();
+					companyInput.value = "HEC "+hecYear();
 					companyInput.disabled = "disabled";
 				}
 			}
+			userType.onchange();
 		}
 	}
 }
