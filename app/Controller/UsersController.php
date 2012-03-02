@@ -145,6 +145,7 @@ class UsersController extends AppController {
 				}
 			}
 		}
+		$this->request->data['User']['confirm_password'] = "";
 		$events = $this->User->Event->find('list');
 		$this->set(compact('events'));
 	}

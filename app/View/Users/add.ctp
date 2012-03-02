@@ -9,6 +9,7 @@
 		echo $this->Form->input('first_name');
 		echo $this->Form->input('last_name');
 		echo $this->Form->input('password');
+		echo $this->Form->input('confirm_password', array('type' => 'password', 'class' => 'required'));
 		echo $this->Form->input('show_contact_info');
 		echo $this->Form->input('email');
 		echo $this->Form->input('phone_number');
