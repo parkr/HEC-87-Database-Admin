@@ -130,6 +130,7 @@ class UsersController extends AppController {
 				}else{
 					$this->request->data['User']['role'] = "user";
 					$this->request->data['User']['date_created'] = date("Y-m-d H:i:s");
+					$this->request->data['User']['email'] = trim($this->request->data['User']['email']);
 					$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
 					if ($this->User->save($this->request->data)) {
 						$id = $this->User->id;
