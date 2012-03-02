@@ -65,3 +65,8 @@ Cache::config('default', array('engine' => 'File'));
  */
  
 date_default_timezone_set('America/New_York');
+
+function normalize_newlines($text){
+	return str_replace("\r", "\n", str_replace("\r\n", "\n", $text));
+}
+

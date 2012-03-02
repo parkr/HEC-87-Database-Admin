@@ -11,7 +11,8 @@ class User extends AppModel {
 	public $name = 'User';
 	public $displayField = 'name';
 	public $virtualFields = array(
-	    'name' => 'CONCAT(User.first_name, " ", User.last_name)'
+	    'name' => 'CONCAT(User.first_name, " ", User.last_name)',
+		'formal_name' => 'CONCAT(User.last_name, ", ", User.first_name)',
 	);
 	public $hasMany = 'Hash';
 	public $hasAndBelongsToMany = array(
@@ -33,6 +34,9 @@ class User extends AppModel {
 			$num = preg_replace('/(-|_| |\+|\(|\)|\.)+/', "", $num);
 			$this->data[$this->alias]['phone_number'] = $num;
 		}
+		if(isset($this->data[$this->alias]['bio'])){
+			$this->data[$this->alias]['bio'] = normalize_newlines($this->data[$this->alias]['bio']);
+		}
 		return true;
 	}
 	
@@ -40,6 +44,17 @@ class User extends AppModel {
 		return $this->find('count', array(
 			'conditions' => array('User.email' => $email)
 		)) > 0;
+	}
+	
+	public function bumpProfileViews(){
+		if($this->data && $this->data[$this->alias]){
+			$newpv = $this->data[$this->alias]['profile_views'] += 1;
+			$this->set('profile_views', $newpv);
+			$this->data['User']['profile_views'] = $newpv;
+			return $this->save();
+		}else{
+			return false;
+		}
 	}
 
 /**

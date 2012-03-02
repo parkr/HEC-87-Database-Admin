@@ -11,6 +11,15 @@ class Event extends AppModel {
  * @var string
  */
 	public $displayField = 'name';
+	
+	public function beforeSave() {
+		if(isset($this->data[$this->alias]['description'])){
+			$this->data[$this->alias]['description'] = normalize_newlines($this->data[$this->alias]['description']);
+		}
+		return true;
+	}
+	
+	
 /**
  * Validation rules
  *

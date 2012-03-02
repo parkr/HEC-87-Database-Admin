@@ -11,6 +11,14 @@ class Faq extends AppModel {
  * @var string
  */
 	public $displayField = 'question';
+	
+	public function beforeSave() {
+		if(isset($this->data[$this->alias]['answer'])){
+			$this->data[$this->alias]['answer'] = normalize_newlines($this->data[$this->alias]['answer']);
+		}
+		return true;
+	}
+	
 /**
  * Validation rules
  *
