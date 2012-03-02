@@ -2,13 +2,7 @@
 <?php echo $this->Form->create('User');?>
 	<fieldset>
 		<legend><?php echo __('Add User'); ?></legend>
-	<?php
-		echo $this->Form->input('role', array(
-			'options' => array(
-				'user' => 'user',
-				'admin' => 'admin'
-			)
-		));
+		<?php
 		echo $this->Form->input('type', array(
 			'options' => array(
 				'student' => 'student', 
