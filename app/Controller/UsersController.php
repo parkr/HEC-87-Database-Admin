@@ -70,10 +70,18 @@ class UsersController extends AppController {
 		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		if ($this->request->is('post')) {
 			$user = $this->User->findByEmail($this->request->data['User']['email']);
-			if ($user['User']['role'] == 'admin' && $this->Auth->login()) {
-				return $this->redirect($this->Auth->redirect());
-			} else {
-				$this->Session->setFlash(__('Username or password is incorrect, you are not a registered user, or you do not have an admin account.'), 'default', array(), 'auth');
+			if($user && $user['User'] && $user['User']['email']){
+				if ($user['User']['role'] == 'admin'){
+					if($this->Auth->login()){
+						return $this->redirect($this->Auth->redirect());
+					}else{
+						$this->Session->setFlash(__('Your username and/or password is incorrect.'), 'default', array(), 'auth');
+					}
+				}else{
+					$this->Session->setFlash(__('Your account is not an admin account. You are not authorized to use this site.'), 'default', array(), 'auth');
+				}
+			}else{
+				$this->Session->setFlash(__('The email entered has not been registered.'), 'default', array(), 'auth');
 			}
 		}
 	}
