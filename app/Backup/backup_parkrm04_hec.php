@@ -47,7 +47,7 @@ function backup_tables($host, $user, $pass, $name, $tables = '*')
 	mysql_close($link);
 	
 	//save file
-	$filename = dirname(__FILE__) . '/' . $name . '-backup-' . time() . '-' . (md5(implode(',',$tables))) . '.sql';
+	$filename = dirname(__FILE__) . '/../../../Backups/' . $name . '-backup-' . time() . '-' . (md5(implode(',',$tables))) . '.sql';
 	return file_put_contents($filename, $return);
 }
 
@@ -69,7 +69,7 @@ $tables = array(
 require(dirname(__FILE__) . "/../Config/database.php");
 $dbconfig = new DATABASE_CONFIG();
 
-$success = backup_tables('localhost', $dbconfig->pmp['login'], $dbconfig->pmp['password'], $dbconfig->pmp['database'], $tables);	
+$success = backup_tables('localhost', $dbconfig->pmp['login'], $dbconfig->pmp['password'], $dbconfig->pmp['database'], $tables);
 
 if($success !== FALSE){
 	echo "[".date('Y-m-d H:i:s')."]: Backup succeeded\n";
