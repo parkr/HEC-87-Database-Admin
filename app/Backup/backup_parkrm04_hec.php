@@ -64,6 +64,9 @@ $tables = array(
 	'mobile_app_users',
 );
 
-backup_tables('localhost', 'root', '', 'hec_mobile', $tables);	
+require(dirname(__FILE__) . "/../Config/database.php");
+$dbconfig = new DATABASE_CONFIG();
+
+backup_tables('localhost', $dbconfig->pmp['login'], $dbconfig->pmp['password'], $dbconfig->pmp['database'], $tables);	
 	
 ?>
