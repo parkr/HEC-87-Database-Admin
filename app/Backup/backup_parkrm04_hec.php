@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('America/New_York');
+
 /* backup the db OR just a table */
 function backup_tables($host, $user, $pass, $name, $tables = '*')
 {
@@ -67,6 +69,12 @@ $tables = array(
 require(dirname(__FILE__) . "/../Config/database.php");
 $dbconfig = new DATABASE_CONFIG();
 
-backup_tables('localhost', $dbconfig->pmp['login'], $dbconfig->pmp['password'], $dbconfig->pmp['database'], $tables);	
+$success = backup_tables('localhost', $dbconfig->pmp['login'], $dbconfig->pmp['password'], $dbconfig->pmp['database'], $tables);	
+
+if($success !== FALSE){
+	echo "[".date('Y-m-d H:i:s')."]: Backup succeeded\n";
+}else{
+	echo "[".date('Y-m-d H:i:s')."]: Backup FAILED\n";
+}
 	
 ?>
