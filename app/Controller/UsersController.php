@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 /**
  * Users Controller
  *
@@ -215,5 +216,69 @@ class UsersController extends AppController {
 		}
 		$this->Session->setFlash(__('User was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+	
+/**
+ * email method
+ * sends an email to a group of users
+ *
+ * @return void
+ */
+	public function email(){
+		if ($this->request->is('post') || $this->request->is('put')) {
+			$data = $this->request->data;
+			if($data['Email']['subject'] != ""){
+				if($data['Email']['body'] != ""){
+					
+					$email = new CakeEmail();
+					$email->from(array('noreply@hotelezracornell.com' => 'Hotel Ezra Cornell IT Manager'));
+					$email->to(array('parkrmoore@gmail.com' => 'Parker Moore'));
+					$email->replyTo(($data['Email']['reply_to'] != "") ? ($data['Email']['reply_to']) : (array('hec@cornell.edu' => 'Hotel Ezra Cornell')));
+					$email->subject($data['Email']['subject']);
+					$special_keys = array(
+						'%%NAME%%', 
+						'%%FIRST_NAME%%', 
+						'%%LAST_NAME%%', 
+						'%%EMAIL%%', 
+						'%%GRAD_YEAR%%', 
+						'%%POSITION%%', 
+						'%%COMPANY%%', 
+						'%%DATE_PROFILE_CREATED%%', 
+						'%%BIO%%'
+					);
+					
+					$date_created_sql_cond = 'User.date_created '.$data['Email']['date_created_comparator'];
+					$params = array(
+						'conditions' => array('User.type' => $data['Email']['group'], $date_created_sql_cond => $data['Email']['date_created'])
+					);
+					$users = $this->User->find('all', $params);
+						
+					foreach($users as $user){
+						$user_information = array(
+							$user['User']['name'],
+							$user['User']['first_name'],
+							$user['User']['last_name'],
+							$user['User']['email'],
+							$user['User']['graduation_year'],
+							$user['User']['position'],
+							$user['User']['company'],
+							$user['User']['date_created'],
+							$user['User']['bio']
+						);
+						$email_text = str_replace($special_keys, $user_information, $data['Email']['body']);
+						$email->send($email_text);
+					
+					}
+					$this->Session->setFlash(__("Your email was sent to parkrmoore@gmail.com (testing)"));
+				}else{
+					$this->Session->setFlash(__("You must supply body text for your email."));
+				}
+			}else{
+				$this->Session->setFlash(__("You must supply a subject for your email."));
+			}
+			pr($this->request->data);
+		}else{
+			$this->set('groups', array('students', 'attendees', 'all'));
+		}
 	}
 }

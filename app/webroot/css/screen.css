@@ -19,3 +19,7 @@
   color: #919191; }
   form .note {
     margin-top: -1.5em; }
+
+/* Email form */
+#UserEmailDateCreated {
+  width: 87%; }
