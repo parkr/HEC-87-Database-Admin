@@ -20,6 +20,10 @@
 							'output' => 'attendees',
 							'selected' => (isset($_POST) && isset($_POST['data']) && $_POST['data']['Email']['group'] == "attemdee")
 						),
+						/*'individual' => array(
+							'output' => 'individual',
+							'selected' => (isset($_POST) && isset($_POST['data']) && $_POST['data']['Email']['group'] == "individual")
+						)*/
 					);
 				?>
 				<label for="UserGroup">Send To</label><select name="data[Email][group]" id="UserType">

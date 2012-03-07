@@ -232,7 +232,6 @@ class UsersController extends AppController {
 					
 					$email = new CakeEmail();
 					$email->from(array('noreply@hotelezracornell.com' => 'Hotel Ezra Cornell IT Manager'));
-					$email->to(array('parkrmoore@gmail.com' => 'Parker Moore'));
 					$email->replyTo(($data['Email']['reply_to'] != "") ? ($data['Email']['reply_to']) : (array('hec@cornell.edu' => 'Hotel Ezra Cornell')));
 					$email->subject($data['Email']['subject']);
 					$special_keys = array(
@@ -254,6 +253,7 @@ class UsersController extends AppController {
 					$users = $this->User->find('all', $params);
 						
 					foreach($users as $user){
+						$email->to(array($user['User']['email'] => $user['User']['name']));
 						$user_information = array(
 							$user['User']['name'],
 							$user['User']['first_name'],
@@ -269,7 +269,7 @@ class UsersController extends AppController {
 						$email->send($email_text);
 					
 					}
-					$this->Session->setFlash(__("Your email was sent to parkrmoore@gmail.com (testing)"));
+					$this->Session->setFlash(__("Your emails were sent."));
 				}else{
 					$this->Session->setFlash(__("You must supply body text for your email."));
 				}
