@@ -1,5 +1,4 @@
 <?php
-/* Sponsors Test cases generated on: 2012-02-07 03:07:19 : 1328602039*/
 App::uses('SponsorsController', 'Controller');
 
 /**
@@ -45,7 +44,6 @@ class SponsorsControllerTestCase extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-
 		$this->Sponsors = new TestSponsorsController();
 		$this->Sponsors->constructClasses();
 	}
@@ -69,7 +67,6 @@ class SponsorsControllerTestCase extends CakeTestCase {
 	public function testIndex() {
 
 	}
-
 /**
  * testView method
  *
@@ -78,7 +75,6 @@ class SponsorsControllerTestCase extends CakeTestCase {
 	public function testView() {
 
 	}
-
 /**
  * testAdd method
  *
@@ -87,7 +83,6 @@ class SponsorsControllerTestCase extends CakeTestCase {
 	public function testAdd() {
 
 	}
-
 /**
  * testEdit method
  *
@@ -96,7 +91,6 @@ class SponsorsControllerTestCase extends CakeTestCase {
 	public function testEdit() {
 
 	}
-
 /**
  * testDelete method
  *
@@ -105,5 +99,4 @@ class SponsorsControllerTestCase extends CakeTestCase {
 	public function testDelete() {
 
 	}
-
 }
