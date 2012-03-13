@@ -11,7 +11,6 @@
 		echo $this->Form->input('giving_level', array(
 			'options' => $options
 		));
-		echo $this->Form->input('giving_level');
 		echo $this->Form->input('photo_url');
 		echo $this->Form->input('website');
 		echo $this->Form->input('details');
