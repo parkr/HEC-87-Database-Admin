@@ -8,7 +8,7 @@
 			$options[$givingLevel] = $givingLevel;
 		}
 		echo $this->Form->input('name');
-		echo $this->Form->input('giving_level'array(
+		echo $this->Form->input('giving_level', array(
 			'options' => $options
 		));
 		echo $this->Form->input('photo_url');
