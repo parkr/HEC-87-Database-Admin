@@ -7,6 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class SponsorsController extends AppController {
 
+	public $givingLevels = array('platinum', 'gold', 'silver', 'bronze', 'friends');
 
 /**
  * index method
@@ -15,7 +16,10 @@ class SponsorsController extends AppController {
  */
 	public function index() {
 		$this->Sponsor->recursive = 0;
-		$this->set('sponsors', $this->paginate());
+		$this->set(array(
+			'sponsors', $this->paginate(),
+			'givingLevels' => $givingLevels
+		));
 	}
 
 /**
@@ -47,6 +51,7 @@ class SponsorsController extends AppController {
 				$this->Session->setFlash(__('The sponsor could not be saved. Please, try again.'));
 			}
 		}
+		$this->set('givingLevels', $givingLevels);
 	}
 
 /**
@@ -70,6 +75,7 @@ class SponsorsController extends AppController {
 		} else {
 			$this->request->data = $this->Sponsor->read(null, $id);
 		}
+		$this->set('givingLevels', $givingLevels);
 	}
 
 /**

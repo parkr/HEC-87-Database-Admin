@@ -3,8 +3,14 @@
 	<fieldset>
 		<legend><?php echo __('Add Sponsor'); ?></legend>
 	<?php
+		$options = array();
+		foreach($givingLevels as $givingLevel){
+			$options[$givingLevel] = $givingLevel;
+		}
 		echo $this->Form->input('name');
-		echo $this->Form->input('giving_level');
+		echo $this->Form->input('giving_level'array(
+			'options' => $options
+		));
 		echo $this->Form->input('photo_url');
 		echo $this->Form->input('website');
 		echo $this->Form->input('details');
