@@ -3,6 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Speaker'); ?></legend>
 	<?php
+		echo $this->Form->input('event_id');
 		echo $this->Form->input('first_name');
 		echo $this->Form->input('last_name');
 		echo $this->Form->input('position');
@@ -18,5 +19,7 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Speakers'), array('action' => 'index'));?></li>
+		<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Event'), array('controller' => 'events', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

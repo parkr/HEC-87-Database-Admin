@@ -88,7 +88,19 @@ class Event extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'Speaker'
+		'Speaker' => array(
+			'className' => 'Speaker',
+			'foreignKey' => 'event_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 	);
 	public $hasAndBelongsToMany = "User";
 

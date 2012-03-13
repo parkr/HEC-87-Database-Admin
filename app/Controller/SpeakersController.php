@@ -47,6 +47,8 @@ class SpeakersController extends AppController {
 				$this->Session->setFlash(__('The speaker could not be saved. Please, try again.'));
 			}
 		}
+		$events = $this->Speaker->Event->find('list');
+		$this->set(compact('events'));
 	}
 
 /**
@@ -70,6 +72,8 @@ class SpeakersController extends AppController {
 		} else {
 			$this->request->data = $this->Speaker->read(null, $id);
 		}
+		$events = $this->Speaker->Event->find('list');
+		$this->set(compact('events'));
 	}
 
 /**

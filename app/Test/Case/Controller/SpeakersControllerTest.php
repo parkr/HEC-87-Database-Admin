@@ -1,5 +1,5 @@
 <?php
-/* Speakers Test cases generated on: 2012-02-07 03:07:12 : 1328602032*/
+/* Speakers Test cases generated on: 2012-03-09 16:08:01 : 1331327281*/
 App::uses('SpeakersController', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class SpeakersControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.speaker');
+	public $fixtures = array('app.speaker', 'app.event', 'app.menu', 'app.food_item', 'app.user', 'app.hash', 'app.events_user');
 
 /**
  * setUp method

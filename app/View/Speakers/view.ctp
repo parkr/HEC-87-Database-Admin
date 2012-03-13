@@ -6,6 +6,11 @@
 			<?php echo h($speaker['Speaker']['id']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Event'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($speaker['Event']['name'], array('controller' => 'events', 'action' => 'view', $speaker['Event']['id'])); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('First Name'); ?></dt>
 		<dd>
 			<?php echo h($speaker['Speaker']['first_name']); ?>
@@ -45,5 +50,7 @@
 		<li><?php echo $this->Form->postLink(__('Delete Speaker'), array('action' => 'delete', $speaker['Speaker']['id']), null, __('Are you sure you want to delete # %s?', $speaker['Speaker']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Speakers'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Speaker'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Event'), array('controller' => 'events', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

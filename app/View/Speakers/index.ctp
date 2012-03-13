@@ -3,6 +3,7 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
+			<th><?php echo $this->Paginator->sort('event_id');?></th>
 			<th><?php echo $this->Paginator->sort('first_name');?></th>
 			<th><?php echo $this->Paginator->sort('last_name');?></th>
 			<th><?php echo $this->Paginator->sort('position');?></th>
@@ -15,11 +16,14 @@
 	foreach ($speakers as $speaker): ?>
 	<tr>
 		<td><?php echo h($speaker['Speaker']['id']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($speaker['Event']['name'], array('controller' => 'events', 'action' => 'view', $speaker['Event']['id'])); ?>
+		</td>
 		<td><?php echo h($speaker['Speaker']['first_name']); ?>&nbsp;</td>
 		<td><?php echo h($speaker['Speaker']['last_name']); ?>&nbsp;</td>
 		<td><?php echo h($speaker['Speaker']['position']); ?>&nbsp;</td>
 		<td><?php echo h($speaker['Speaker']['company']); ?>&nbsp;</td>
-		<td><?php echo truncate($speaker['Speaker']['bio'], 15); ?>&nbsp;</td>
+		<td><?php echo h($speaker['Speaker']['bio']); ?>&nbsp;</td>
 		<td><?php echo h($speaker['Speaker']['photo']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $speaker['Speaker']['id'])); ?>
@@ -48,5 +52,7 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Speaker'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Event'), array('controller' => 'events', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
