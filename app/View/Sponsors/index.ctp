@@ -4,6 +4,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
+			<th><?php echo $this->Paginator->sort('giving_level');?></th>
 			<th><?php echo $this->Paginator->sort('photo_url');?></th>
 			<th><?php echo $this->Paginator->sort('website');?></th>
 			<th><?php echo $this->Paginator->sort('details');?></th>
@@ -14,6 +15,7 @@
 	<tr>
 		<td><?php echo h($sponsor['Sponsor']['id']); ?>&nbsp;</td>
 		<td><?php echo h($sponsor['Sponsor']['name']); ?>&nbsp;</td>
+		<td><?php echo h($sponsor['Sponsor']['giving_level']); ?>&nbsp;</td>
 		<td><?php echo h($sponsor['Sponsor']['photo_url']); ?>&nbsp;</td>
 		<td><?php echo h($sponsor['Sponsor']['website']); ?>&nbsp;</td>
 		<td><?php echo h($sponsor['Sponsor']['details']); ?>&nbsp;</td>

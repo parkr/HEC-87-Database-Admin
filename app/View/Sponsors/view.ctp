@@ -11,6 +11,11 @@
 			<?php echo h($sponsor['Sponsor']['name']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Giving Level'); ?></dt>
+		<dd>
+			<?php echo h($sponsor['Sponsor']['giving_level']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Photo Url'); ?></dt>
 		<dd>
 			<?php echo h($sponsor['Sponsor']['photo_url']); ?>

@@ -5,6 +5,7 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
+		echo $this->Form->input('giving_level');
 		echo $this->Form->input('photo_url');
 		echo $this->Form->input('website');
 		echo $this->Form->input('details');
