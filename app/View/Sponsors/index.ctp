@@ -2,7 +2,6 @@
 	<h2><?php echo __('Sponsors');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('giving_level');?></th>
 			<th><?php echo $this->Paginator->sort('photo_url');?></th>
@@ -13,12 +12,11 @@
 	<?php
 	foreach ($sponsors as $sponsor): ?>
 	<tr>
-		<td><?php echo h($sponsor['Sponsor']['id']); ?>&nbsp;</td>
 		<td><?php echo h($sponsor['Sponsor']['name']); ?>&nbsp;</td>
 		<td><?php echo h($sponsor['Sponsor']['giving_level']); ?>&nbsp;</td>
 		<td><?php echo h($sponsor['Sponsor']['photo_url']); ?>&nbsp;</td>
 		<td><?php echo h($sponsor['Sponsor']['website']); ?>&nbsp;</td>
-		<td><?php echo h($sponsor['Sponsor']['details']); ?>&nbsp;</td>
+		<td><?php echo truncate($sponsor['Sponsor']['details'], 10); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $sponsor['Sponsor']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $sponsor['Sponsor']['id'])); ?>
