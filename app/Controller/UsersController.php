@@ -174,7 +174,7 @@ class UsersController extends AppController {
 			$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
 			
 			if($this->request->data['User']['password'] != ""){
-				// nothing entered. forget the password (do not save)
+				// something entered. rehash and save password!
 				$fieldList[] = 'password';
 			}
 			
