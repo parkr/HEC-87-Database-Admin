@@ -141,6 +141,7 @@ class UsersController extends AppController {
 					$this->request->data['User']['date_created'] = date("Y-m-d H:i:s");
 					$this->request->data['User']['email'] = trim($this->request->data['User']['email']);
 					$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
+					$this->request->data['User']['password'] = AuthComponent::password($this->request->data['User']['password']);
 					if ($this->User->save($this->request->data)) {
 						$id = $this->User->id;
 						$this->request->data['User'] = array_merge($this->request->data["User"], array('id' => $id));
@@ -175,6 +176,7 @@ class UsersController extends AppController {
 			
 			if($this->request->data['User']['password'] != ""){
 				// something entered. rehash and save password!
+				$this->request->data['User']['password'] = AuthComponent::password($this->request->data['User']['password']);
 				$fieldList[] = 'password';
 			}
 			

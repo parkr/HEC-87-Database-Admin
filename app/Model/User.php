@@ -29,10 +29,6 @@ class User extends AppModel {
 	);
 	
 	public function beforeSave() {
-		if (isset($this->data[$this->alias]['password']) && $this->data[$this->alias]['password'] != "" && 
-			isset($this->data['please_change_password']) && $this->data['please_change_password'] == TRUE){
-			$this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
-		}
 		if(isset($this->data[$this->alias]['phone_number'])){
 			$num = $this->data[$this->alias]['phone_number'];
 			$num = preg_replace('/(-|_| |\+|\(|\)|\.)+/', "", $num);
@@ -53,9 +49,8 @@ class User extends AppModel {
 	public function bumpProfileViews(){
 		if($this->data && $this->data[$this->alias]){
 			$newpv = $this->data[$this->alias]['profile_views'] += 1;
-			$this->set('profile_views', $newpv);
-			$this->data['User']['profile_views'] = $newpv;
-			return $this->save(null, true, array('profile_views'));
+			$this->data[$this->alias]['profile_views'] = $newpv;
+			return $this->saveField('profile_views', $newpv);
 		}else{
 			return false;
 		}
