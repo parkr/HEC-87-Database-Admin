@@ -47,7 +47,7 @@ function backup_tables($host, $user, $pass, $name, $tables = '*')
 	mysql_close($link);
 	
 	//save file
-	$filename = dirname(__FILE__) . '/../../../Backups/' . $name . '-backup-' . time() . '-' . (md5(implode(',',$tables))) . '.sql';
+	$filename = dirname(__FILE__) . '/../../../Backups/' . $name . '-backup-' . time() . '-' . (md5($return)) . '.sql';
 	return file_put_contents($filename, $return);
 }
 
