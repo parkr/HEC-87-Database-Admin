@@ -283,4 +283,11 @@ class UsersController extends AppController {
 			$this->set('groups', array('students', 'attendees', 'all'));
 		}
 	}
+	
+	public function hash_password(){
+		if($this->request->is('post') || $this->request->is('put')){
+			$this->set("hashed_password", AuthComponent::password($this->request->data['User']['password']));
+		}
+	}
+	
 }
